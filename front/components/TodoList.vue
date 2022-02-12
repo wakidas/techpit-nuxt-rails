@@ -3,7 +3,7 @@
     <v-card-title>
       Todo List
       <v-spacer></v-spacer>
-      <v-text-firld v-model="search" label="Search" single-line hide-details></v-text-firld>
+      <v-text-field v-model="search" label="Search" single-line hide-details></v-text-field>
     </v-card-title>
     <v-data-table :headers="headers" :items="todos" :search="search"></v-data-table>
   </v-card>

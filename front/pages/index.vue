@@ -20,6 +20,9 @@ export default {
       todos: [],
     };
   },
+  created() {
+    console.log("APIKEY: ", process.env.API_KEY);
+  },
   methods: {
     async addTodo(title){
       await axios.post("/v1/todos", {title});

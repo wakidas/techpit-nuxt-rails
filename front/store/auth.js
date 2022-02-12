@@ -1,6 +1,6 @@
-export const state = () => {
+export const state = () => ({
   currentUser: null
-}
+})
 
 export const mutations = {
   setUser(state, payload) {
@@ -10,6 +10,7 @@ export const mutations = {
 
 export const actions = {
   setUser(context, data){
+    console.log('actionsが呼ばれた');
     context.commit('setUser', data)
   }
 }

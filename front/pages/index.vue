@@ -23,11 +23,13 @@ export default {
   },
   computed: {
     user() {
+      console.log('computedが呼ばれた');
+      console.log(this.$store.state.auth.currentUser);
       return this.$store.state.auth.currentUser;
     }
   },
   created() {
-    console.log("APIKEY: ", process.env.API_KEY);
+    // console.log("ログイン情報: ", this.$store.state.auth.currentUser);
   },
   methods: {
     async addTodo(title){

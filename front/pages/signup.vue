@@ -74,7 +74,9 @@ export default {
       uid: res.user.uid
     };
 
-    await axios.post("/v1/users", {
+    this.$store.dispatch("loading/setLoading", true)
+
+    const {data} = await axios.post("/v1/users", {
       user
     })
     .catch(err => {
@@ -83,6 +85,10 @@ export default {
       });
     });
 
+    setTimeout(() => {
+      this.$store.dispatch("loading/setLoading", false);
+    }, 3000);
+    this.$store.dispatch("auth/setUser", data)
     this.$router.push("/")
     }
   }

@@ -1,6 +1,7 @@
 <template>
   <v-app dark>
     <div>
+      <Success />
       <Loading/>
     </div>
     <v-navigation-drawer
@@ -93,6 +94,8 @@
 
 <script>
   import Loading from "@/components/Loading"
+  import Success from "@/components/Success";
+
   export default {
     data() {
       return {
@@ -106,7 +109,8 @@
       }
     },
     components: {
-      Loading
+      Loading,
+      Success
     },
     computed: {
       user() {

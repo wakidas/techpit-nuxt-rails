@@ -2,7 +2,7 @@
   <div>
     <p v-if="user">名前: {{ user.name }}</p>
     <AddTodo @submit="addTodo"></AddTodo>
-    <TodoList :todos="todos"></TodoList>
+    <TodoList :todos="user.todos"></TodoList>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 import AddTodo from "@/components/AddTodo";
 import TodoList from "@/components/TodoList";
 import axios from "@/plugins/axios";
+
 
 export default {
   components: {
@@ -29,13 +30,15 @@ export default {
     }
   },
   created() {
-    // console.log("ログイン情報: ", this.$store.state.auth.currentUser);
+    console.log("ログイン情報: ", this.$store.state.auth.currentUser);
   },
   methods: {
-    async addTodo(title){
-      await axios.post("/v1/todos", {title});
-      this.todos.push({
-        title
+    async addTodo(todo){
+      const {data} = await axios.post("/v1/todos", {todo});
+
+      this.$store.dispatch("auth/setUser", {
+        ...this.user,
+        todos: [...this.user.todos, data]
       })
     }
   }
